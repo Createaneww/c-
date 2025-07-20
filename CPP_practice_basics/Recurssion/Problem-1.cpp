@@ -63,6 +63,8 @@ void PNtoOne(int i, int n)
     cout << i << " ";
 }
 
+
+//parameterrized
 void Sum_of_N_numbers(int n, int sum)
 {
     if(n<1){
@@ -74,6 +76,22 @@ void Sum_of_N_numbers(int n, int sum)
    
 }
 
+
+//funtional method
+int SUM_ofN(int n){
+    if(n == 0) return 0;
+    return n + SUM_ofN(n-1);
+}
+
+
+
+//Factorial of N
+
+int facto(int n){
+    if(n == 0) return 1;
+
+    return n * facto(n-1);
+}
 int main()
 {
     int n;
@@ -87,6 +105,9 @@ int main()
     // P1toN(n , n);
     // PNtoOne(1 , n);
 
-   Sum_of_N_numbers(n, 0);
+//    Sum_of_N_numbers(n, 0);
+//    int res = SUM_ofN(n);
+// cout<<res;
+cout<<facto(n);
 
 }
