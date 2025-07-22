@@ -23,6 +23,7 @@ void Bubble_sort(int arr[], int n)
 int main()
 {
     int n;
+    cout<<"Enter the size of the array";
     cin >> n;
     int arr[n];
     cout << "Enter the elements of arr you want to sort" << endl;
