@@ -1,36 +1,41 @@
+
+//code 1
 #include<bits/stdc++.h>
 using namespace std;
 
-int Partition_Func(vector<int> arr , int low , int high){
+int f(vector<int> &arr , int low , int high){
     int pivot = arr[low];
     int i = low;
     int j = high;
     while(i<j){
-        while (arr[i] <= pivot && i < high-1)
+        while (arr[i] <= pivot && i <= high-1)
         {
             i++;
         }
-        while (arr[j]>= pivot && j>low+1)
+        while (arr[j]>= pivot && j>=low+1)
         {
-            j++;
+            j--;
         }
-        if(i<j) swap(arr[i] , arr[j]);
+        if(i<j){
+
+            swap(arr[i] , arr[j]);
+        } 
         
     }
-    swap(arr[low] , arr[high]);
+    swap(arr[low] , arr[j]);
     return j;
 }
 
-void Quick_Sort(vector<int>arr , int low , int high){
-    if(low<high){
-        int Partition = Partition_Func(arr , low , high);
-        Quick_Sort(arr , low , Partition-1);
-        Quick_Sort(arr , Partition+1 , high);
+void Quick_Sort(vector<int> &arr , int low , int high){
+    if(low < high){
+        int PIndex = f(arr , low , high);
+        Quick_Sort(arr , low , PIndex-1);
+        Quick_Sort(arr , PIndex+1 , high);
     }
 }
 
 int main(){
-     int n ;
+     int n;
      cin>>n;
      vector<int>arr(n);
      for(int i = 0 ; i<n ; i++){
@@ -41,4 +46,54 @@ int main(){
      for(int i = 0 ; i<n ; i++){
         cout<<arr[i]<<" ";
      }
+
+     //
+    
 }
+
+
+//code 2
+// #include<bits/stdc++.h>
+// using namespace std;
+// int f(vector<int>&arr,int low,int high){
+//     int pivot=arr[low];
+//     int i=low;
+//     int j=high;
+//     while(i<j){
+//         while(arr[i]<=pivot && i<=high-1){
+//             i++;
+//         }
+//     while(arr[j]>=pivot && j>= low+1){
+//         j--;
+//     }
+//     if(i<j){
+//         swap(arr[i],arr[j]);
+//     }
+//     }
+//     swap(arr[low],arr[j]);
+//     return j;
+// }
+// void quick_sort(vector<int>&arr,int low ,int high){
+//     if(low <high){
+//         int Pindex=f(arr,low,high);
+//         quick_sort(arr,low,Pindex-1);
+//         quick_sort(arr,Pindex+1,high);
+    
+//     }
+// }
+// int main(){
+    
+//     int n;
+//     cin>>n;
+//     vector<int>arr(n);
+//     for(int i=0;i<n;i++){
+//         cin>>arr[i];
+//     }
+//     quick_sort(arr,0,n-1);
+//     for(int i=0;i<n;i++){
+//         cout<<arr[i]<<" ";
+//     }
+
+
+
+// }
