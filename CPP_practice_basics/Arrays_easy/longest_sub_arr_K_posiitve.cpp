@@ -30,34 +30,6 @@ int longestsubarr(vector<int> &arr, int n, int k)
     return maxlen;
 }
 
-int longestSubArr(vector<int> &arr, int n, int k)
-{
-    map<int, int> mpp;
-    int sum = 0;
-    int maxlen = 0;
-
-    for (int i = 0; i < n; i++)
-    {
-        sum += arr[i];
-        if (sum == k)
-        {
-            maxlen = max(maxlen, i + 1);
-        }
-
-        int remaining = sum - k;
-        if (mpp.find(remaining) != mpp.end())
-        {
-            int len = i - mpp[remaining];
-            maxlen = max(maxlen, len);
-        }
-        if (mpp.find(sum) == mpp.end())
-        {
-
-            mpp[sum] = i;
-        }
-    }
-    return maxlen;
-}
 
 int OPtimal_longestSubarr(vector<int>&arr , int n , int k){
     int maxlen = 0;
@@ -85,6 +57,7 @@ int OPtimal_longestSubarr(vector<int>&arr , int n , int k){
     return maxlen;
     
 }
+
 int main()
 {
     int n;
