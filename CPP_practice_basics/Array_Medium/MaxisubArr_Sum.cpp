@@ -5,7 +5,6 @@ int kadaneAlgo(vector<int> &arr, int n)
 {
     int sum = 0;
     int maxi = INT_MIN;
-    int start;
     
     for (int i = 0; i < n; i++)
     {
@@ -50,6 +49,7 @@ vector<int> printmaxsubarr(vector<int>&arr , int n){
     }
     return temp;
 }
+
 int main()
 {
     int n;
