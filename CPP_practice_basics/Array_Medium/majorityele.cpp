@@ -2,29 +2,17 @@
 using namespace std;
 
 int majorityelement(vector<int>&arr , int n){
-    int ele;
-    int cnt = 0;
-    for (int i = 0; i < n; i++)
+    unordered_map<int , int>mpp;
+    for (int i = 0;  i < n;  i++)
     {
-        if(cnt == 0){
-            cnt = 1;
-            ele = arr[i];
-        }else if(arr[i] == ele){
-            cnt++;
-        }else{
-            cnt--;
-        }
+        mpp[arr[i]]++;
     }
-
-    int cnt1= 0;
-    for (int i = 0; i < n; i++)
-    {
-        if(arr[i] == ele){
-            cnt1++;
-        }
-    }
-    if(cnt1>n/2) return ele;
     
+    for(auto it : mpp){
+        if(it.second > n/2){
+            return it.first;
+        }
+    }
     
 }
 
@@ -53,6 +41,7 @@ for(int i = 0; i < n; i++)
     
 }
 }
+
 
 int main(){
     int n;
