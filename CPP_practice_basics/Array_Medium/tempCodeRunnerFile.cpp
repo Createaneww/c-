@@ -1,1 +1,1 @@
-x += 1;
+cout << BetterCountSubarr(arr, n, k);
