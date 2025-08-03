@@ -50,6 +50,50 @@ int OptimalLongestconsequetive(vector<int>&arr , int n){
     }
     return longest;  
 }
+
+//practice below;
+
+
+int Longestconsecutive(vector<int>&arr , int n){
+    int cnt = 0;
+    int longest = 1;
+    int lastsmaller = INT_MIN;
+    sort(arr.begin() , arr.end());
+    for(int i = 0 ; i<n ; i++){
+        if(arr[i]-1 == lastsmaller){
+            cnt += 1;
+            lastsmaller = arr[i];
+        }else if(arr[i] != lastsmaller){
+            cnt = 1;
+            lastsmaller = arr[i];
+        } 
+        longest = max(longest, cnt);
+    }
+    return longest;
+    
+}
+
+int longestconsecutive(vector<int>&arr , int n){
+    unordered_set<int>st;
+    for (int i = 0; i < n; i++)
+    {
+        st.insert(arr[i]);
+    }
+    int longest = 1;
+    for(auto it: st){
+        if(st.find(it-1) == st.end()){
+        int cnt = 1;
+        int x = it;
+        while (st.find(x+1) != st.end())
+        {
+            x += 1;
+            cnt++;
+        }
+        longest = max(longest , cnt);  
+        }
+    }
+    return longest;
+}
 int main(){
     int n;
     cin>>n;
@@ -60,6 +104,8 @@ int main(){
     }
 
     // cout<<LongestConsequetive(arr , n);
-    cout<<OptimalLongestconsequetive(arr , n);
+    // cout<<OptimalLongestconsequetive(arr , n);
     
+    //  cout<<Longestconsecutive(arr , n);
+     cout<<longestconsecutive(arr , n);
 }
